@@ -11,4 +11,4 @@ A clock for Pomodoro Technique
 IDE: [Visual Studio * 2015](https://www.visualstudio.com/)  
 System: [Windows 10](https://www.microsoft.com/en-us/windows/get-windows-10)
 ### Run
-[.Net FrameWork 4.5.2](https://www.microsoft.com/en-us/download/details.aspx?id=42642)*Installed in Windows 10* or later
+[.Net FrameWork 4.5.2](https://www.microsoft.com/en-us/download/details.aspx?id=42642)(*Installed in Windows 10*) or later
