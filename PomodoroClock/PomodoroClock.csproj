@@ -7,8 +7,8 @@
     <ProjectGuid>{ADC4CE62-60B5-425D-8585-060B29BE3538}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PomodoroTimer</RootNamespace>
-    <AssemblyName>PomodoroTimer</AssemblyName>
+    <RootNamespace>PomodoroClock</RootNamespace>
+    <AssemblyName>PomodoroClock</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -68,6 +68,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace PomodoroTimer
+namespace PomodoroClock
 {
     public partial class Form_main : Form
     {

@@ -1,4 +1,4 @@
-﻿namespace PomodoroTimer
+﻿namespace PomodoroClock
 {
     partial class Form_main
     {
