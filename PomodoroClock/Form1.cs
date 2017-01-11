@@ -23,7 +23,10 @@ namespace PomodoroClock
 
         private void button_submit_Click(object sender, EventArgs e)
         {
-
+            label_timeDuration.Enabled = label_timeDuration.Visible = button_submit.Enabled = button_submit.Visible = textBox_timeDuration.Enabled = textBox_timeDuration.Visible = false;
+            SENCOND_CLOCK.Interval = 1000;
+            SENCOND_CLOCK.Elapsed += new System.Timers.ElapsedEventHandler(this.timerProcess);
+            this.Hide();
         }
         private void timerProcess(object sender, System.Timers.ElapsedEventArgs e)
         {
