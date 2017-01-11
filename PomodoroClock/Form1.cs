@@ -16,6 +16,7 @@ namespace PomodoroClock
         public Form_main()
         {
             InitializeComponent();
+            textBox_timeDuration.Text = "25";
         }
 
         private void button_submit_Click(object sender, EventArgs e)
@@ -28,7 +29,8 @@ namespace PomodoroClock
             {
                 Console.WriteLine("error");
                 Application.Exit();
-            }else
+            }
+            else
             {
                 TIME_DURATION_WORK = tmpInt * 60 * 1000;
             }
@@ -39,12 +41,11 @@ namespace PomodoroClock
         private void timerProcess(object sender, System.Timers.ElapsedEventArgs e)
         {
 
-            changeVisibleTime();
             //修改TIME_DURATION_NOW，并判断是否已到期限
             TIME_DURATION_NOW += 1000;
             if (RESTING)
             {
-
+                threadSetText("REST");
                 if (TIME_DURATION_NOW >= TIME_DURATION_REST)
                 {
                     TIME_DURATION_NOW = 0;
@@ -53,14 +54,17 @@ namespace PomodoroClock
                     if (REST_COUNT == 4)
                     {
                         TIME_DURATION_REST *= 5;
-                    }else if (TIME_DURATION_REST>4)
+                    }
+                    else if (TIME_DURATION_REST > 4)
                     {
                         TIME_DURATION_REST /= 5;
                     }
                     RESTING = !RESTING;
                 }
-            }else
+            }
+            else
             {
+                changeVisibleTime();
                 if (TIME_DURATION_NOW >= TIME_DURATION_WORK)
                 {
                     TIME_DURATION_NOW = 0;
@@ -69,12 +73,14 @@ namespace PomodoroClock
                 }
             }
         }
-        private void setFormVisible(bool b) {
+        private void setFormVisible(bool b)
+        {
             if (this.InvokeRequired)
             {
                 SetVisibleCallback d = new SetVisibleCallback(setFormVisible);
-                this.Invoke(d,new object[]{ b });
-            }else
+                this.Invoke(d, new object[] { b });
+            }
+            else
             {
                 this.Visible = b;
                 if (b)
@@ -86,12 +92,13 @@ namespace PomodoroClock
 
         private void changeVisibleTime()
         {
-            int tmpTime,second,minute;
+            int tmpTime, second, minute;
             string secondS, minuteS;
             if (RESTING)
             {
                 tmpTime = (TIME_DURATION_REST - TIME_DURATION_NOW) / 1000;
-            }else
+            }
+            else
             {
                 tmpTime = (TIME_DURATION_WORK - TIME_DURATION_NOW) / 1000;
             }
@@ -133,8 +140,10 @@ namespace PomodoroClock
         {
             if (this.Visible == true)
             {
-                threadSetText("REST");
-                SENCOND_CLOCK.Stop();
+                if (!RESTING)
+                {
+                    SENCOND_CLOCK.Stop();
+                }
             }
             else
             {
@@ -153,7 +162,7 @@ namespace PomodoroClock
 
         private void notifyIcon_MouseDown(object sender, MouseEventArgs e)
         {
-            if(e.Button==MouseButtons.Left)
+            if (e.Button == MouseButtons.Left)
             {
                 notifyIcon.ShowBalloonTip(1000);
             }
@@ -163,6 +172,16 @@ namespace PomodoroClock
         {
             Application.Exit();
         }
-    }
 
+        private void textBox_timeDuration_Click(object sender, EventArgs e)
+        {
+            textBox_timeDuration.SelectAll();
+        }
+
+        private void notifyIcon_DoubleClick(object sender, EventArgs e)
+        {
+            this.Show();
+            this.Activate();
+        }
+    }
 }
