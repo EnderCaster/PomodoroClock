@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Media;
 using System.Windows.Forms;
 
 namespace PomodoroClock
@@ -21,22 +23,7 @@ namespace PomodoroClock
 
         private void button_submit_Click(object sender, EventArgs e)
         {
-            textBox_timeDuration.Enabled = textBox_timeDuration.Visible = label_timeDuration.Enabled = label_timeDuration.Visible = button_submit.Enabled = button_submit.Visible = false;
-            //设置秒计时器属性
-            int tmpInt = TIME_DURATION_WORK / 1000 / 60;
-            int.TryParse(textBox_timeDuration.Text, out tmpInt);
-            if (tmpInt == 0)
-            {
-                Console.WriteLine("error");
-                Application.Exit();
-            }
-            else
-            {
-                TIME_DURATION_WORK = tmpInt * 60 * 1000;
-            }
-            SENCOND_CLOCK.Interval = 1000;//秒表
-            SENCOND_CLOCK.Elapsed += new System.Timers.ElapsedEventHandler(timerProcess);
-            this.Hide();
+
         }
         private void timerProcess(object sender, System.Timers.ElapsedEventArgs e)
         {
@@ -69,6 +56,7 @@ namespace PomodoroClock
                 {
                     TIME_DURATION_NOW = 0;
                     this.setFormVisible(true);
+                    alert();
                     RESTING = !RESTING;
                 }
             }
@@ -182,6 +170,19 @@ namespace PomodoroClock
         {
             this.Show();
             this.Activate();
+        }
+        private void alert()
+        {
+            SoundPlayer alertPlayer = new SoundPlayer();
+            alertPlayer.SoundLocation = "AlertSound.wav";
+            try
+            {
+                alertPlayer.Play();
+            }catch(FileNotFoundException fnfe)
+            {
+                MessageBox.Show("声音播放失败，请检查程序完整性", "警告", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine(fnfe.Message);
+            }
         }
     }
 }
