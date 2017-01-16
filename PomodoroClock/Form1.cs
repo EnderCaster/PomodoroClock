@@ -45,6 +45,7 @@ namespace PomodoroClock
                 if (TIME_DURATION_NOW >= TIME_DURATION_REST)
                 {
                     TIME_DURATION_NOW = 0;
+                    alert();
                     this.Visible = false;
                     REST_COUNT++;
                     if (REST_COUNT == 4)
