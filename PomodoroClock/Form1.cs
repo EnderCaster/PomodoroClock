@@ -23,7 +23,7 @@ namespace PomodoroClock
 
         private void button_submit_Click(object sender, EventArgs e)
         {
-            label_timeDuration.Enabled = label_timeDuration.Visible = button_submit.Enabled = button_submit.Visible = textBox_timeDuration.Enabled = textBox_timeDuration.Visible = false;
+            setTimDurationEV(false);
             SENCOND_CLOCK.Interval = 1000;
             SENCOND_CLOCK.Elapsed += new System.Timers.ElapsedEventHandler(this.timerProcess);
             int result;
@@ -46,7 +46,7 @@ namespace PomodoroClock
                 {
                     TIME_DURATION_NOW = 0;
                     alert();
-                    this.Visible = false;
+                    setFormVisible(false);
                     REST_COUNT++;
                     if (REST_COUNT == 4)
                     {
@@ -65,7 +65,7 @@ namespace PomodoroClock
                 if (TIME_DURATION_NOW >= TIME_DURATION_WORK)
                 {
                     TIME_DURATION_NOW = 0;
-                    this.setFormVisible(true);
+                    setFormVisible(true);
                     alert();
                     RESTING = !RESTING;
                 }
@@ -193,6 +193,23 @@ namespace PomodoroClock
                 MessageBox.Show("声音播放失败，请检查程序完整性", "警告", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Console.WriteLine(fnfe.Message);
             }
+        }
+
+        private void terminateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!RESTING)
+            {
+                setTimDurationEV(true);
+                TIME_DURATION_NOW = 0;
+                threadSetText("00:00");
+                alert();
+                this.Show();
+                this.Activate();
+            }
+        }
+        private void setTimDurationEV(bool enable)
+        {
+            label_timeDuration.Enabled = label_timeDuration.Visible = button_submit.Enabled = button_submit.Visible = textBox_timeDuration.Enabled = textBox_timeDuration.Visible = enable;
         }
     }
 }

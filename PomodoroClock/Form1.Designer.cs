@@ -37,6 +37,7 @@
             this.button_submit = new System.Windows.Forms.Button();
             this.label_timeDuration = new System.Windows.Forms.Label();
             this.restTime = new System.Windows.Forms.Label();
+            this.terminateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip_exit.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,14 +54,15 @@
             // contextMenuStrip_exit
             // 
             this.contextMenuStrip_exit.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ExitToolStripMenuItem});
+            this.ExitToolStripMenuItem,
+            this.terminateToolStripMenuItem});
             this.contextMenuStrip_exit.Name = "contextMenuStrip_exit";
-            this.contextMenuStrip_exit.Size = new System.Drawing.Size(132, 26);
+            this.contextMenuStrip_exit.Size = new System.Drawing.Size(153, 70);
             // 
             // ExitToolStripMenuItem
             // 
             this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
-            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
+            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.ExitToolStripMenuItem.Text = "Stop & Exit";
             this.ExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
@@ -102,6 +104,13 @@
             this.restTime.TabIndex = 4;
             this.restTime.Text = "00:00";
             // 
+            // terminateToolStripMenuItem
+            // 
+            this.terminateToolStripMenuItem.Name = "terminateToolStripMenuItem";
+            this.terminateToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.terminateToolStripMenuItem.Text = "terminate";
+            this.terminateToolStripMenuItem.Click += new System.EventHandler(this.terminateToolStripMenuItem_Click);
+            // 
             // Form_main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -130,6 +139,7 @@
         private System.Windows.Forms.Label restTime;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip_exit;
         private System.Windows.Forms.ToolStripMenuItem ExitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem terminateToolStripMenuItem;
     }
 }
 
