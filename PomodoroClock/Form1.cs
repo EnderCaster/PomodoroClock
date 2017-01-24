@@ -10,7 +10,7 @@ namespace PomodoroClock
         delegate void SetTextCallback(string text);
         delegate void SetVisibleCallback(bool visible);
         static int TIME_DURATION_WORK = 25 * 60 * 1000;//默认25分钟
-        static int TIME_DURATION_REST =5 * 60 * 1000;
+        static int TIME_DURATION_REST = 5 * 60 * 1000;
         static int TIME_DURATION_NOW = 0;
         static int REST_COUNT = 0;
         static bool RESTING = false;//false=工作，true=休息
@@ -41,7 +41,7 @@ namespace PomodoroClock
             TIME_DURATION_NOW += 1000;
             if (RESTING)
             {
-                threadSetText("REST");
+                threadSetText(" REST");
                 if (TIME_DURATION_NOW >= TIME_DURATION_REST)
                 {
                     RESTING = !RESTING;
@@ -197,15 +197,12 @@ namespace PomodoroClock
 
         private void terminateToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (!RESTING)
-            {
-                setTimDurationEV(true);
-                TIME_DURATION_NOW = 0;
-                threadSetText("00:00");
-                alert();
-                this.Show();
-                this.Activate();
-            }
+            setTimDurationEV(true);
+            TIME_DURATION_NOW = 0;
+            threadSetText("00:00");
+            SENCOND_CLOCK.Stop();
+            this.Show();
+            this.Activate();
         }
         private void setTimDurationEV(bool enable)
         {
