@@ -52,11 +52,10 @@ namespace PomodoroClock
                     {
                         TIME_DURATION_REST *= 5;
                     }
-                    else if (TIME_DURATION_REST > 4)
+                    else if (REST_COUNT > 4)
                     {
                         TIME_DURATION_REST /= 5;
                     }
-                    TIME_DURATION_NOW = 0;
                 }
             }
             else
@@ -67,7 +66,6 @@ namespace PomodoroClock
                     RESTING = !RESTING;
                     TIME_DURATION_NOW = 0;
                     setFormVisible(true);
-                    TIME_DURATION_NOW = 0;
                 }
             }
         }
