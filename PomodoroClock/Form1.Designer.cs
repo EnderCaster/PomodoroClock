@@ -32,8 +32,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_main));
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenuStrip_exit = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.ExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.terminateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.textBox_timeDuration = new System.Windows.Forms.TextBox();
             this.button_submit = new System.Windows.Forms.Button();
             this.label_timeDuration = new System.Windows.Forms.Label();
@@ -57,21 +57,21 @@
             this.terminateToolStripMenuItem,
             this.ExitToolStripMenuItem});
             this.contextMenuStrip_exit.Name = "contextMenuStrip_exit";
-            this.contextMenuStrip_exit.Size = new System.Drawing.Size(153, 70);
-            // 
-            // ExitToolStripMenuItem
-            // 
-            this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
-            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.ExitToolStripMenuItem.Text = " Exit";
-            this.ExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
+            this.contextMenuStrip_exit.Size = new System.Drawing.Size(135, 48);
             // 
             // terminateToolStripMenuItem
             // 
             this.terminateToolStripMenuItem.Name = "terminateToolStripMenuItem";
-            this.terminateToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.terminateToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.terminateToolStripMenuItem.Text = "Terminate";
             this.terminateToolStripMenuItem.Click += new System.EventHandler(this.terminateToolStripMenuItem_Click);
+            // 
+            // ExitToolStripMenuItem
+            // 
+            this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
+            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.ExitToolStripMenuItem.Text = " Exit";
+            this.ExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
             // textBox_timeDuration
             // 
@@ -122,7 +122,7 @@
             this.Controls.Add(this.textBox_timeDuration);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form_main";
-            this.Text = "Timer for Pomodoro Technique";
+            this.Text = "PomodoroClock";
             this.VisibleChanged += new System.EventHandler(this.Form_main_VisibleChanged);
             this.contextMenuStrip_exit.ResumeLayout(false);
             this.ResumeLayout(false);
