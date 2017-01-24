@@ -10,7 +10,7 @@ namespace PomodoroClock
         delegate void SetTextCallback(string text);
         delegate void SetVisibleCallback(bool visible);
         static int TIME_DURATION_WORK = 25 * 60 * 1000;//默认25分钟
-        static int TIME_DURATION_REST = 5 * 60 * 1000;
+        static int TIME_DURATION_REST =5 * 60 * 1000;
         static int TIME_DURATION_NOW = 0;
         static int REST_COUNT = 0;
         static bool RESTING = false;//false=工作，true=休息
@@ -44,8 +44,8 @@ namespace PomodoroClock
                 threadSetText("REST");
                 if (TIME_DURATION_NOW >= TIME_DURATION_REST)
                 {
+                    RESTING = !RESTING;
                     TIME_DURATION_NOW = 0;
-                    alert();
                     setFormVisible(false);
                     REST_COUNT++;
                     if (REST_COUNT == 4)
@@ -56,7 +56,7 @@ namespace PomodoroClock
                     {
                         TIME_DURATION_REST /= 5;
                     }
-                    RESTING = !RESTING;
+                    TIME_DURATION_NOW = 0;
                 }
             }
             else
@@ -64,10 +64,10 @@ namespace PomodoroClock
                 changeVisibleTime();
                 if (TIME_DURATION_NOW >= TIME_DURATION_WORK)
                 {
+                    RESTING = !RESTING;
                     TIME_DURATION_NOW = 0;
                     setFormVisible(true);
-                    alert();
-                    RESTING = !RESTING;
+                    TIME_DURATION_NOW = 0;
                 }
             }
         }
@@ -136,17 +136,16 @@ namespace PomodoroClock
 
         private void Form_main_VisibleChanged(object sender, EventArgs e)
         {
-            if (this.Visible == true)
+            if (this.Visible == true && !RESTING)
             {
-                if (!RESTING)
-                {
-                    SENCOND_CLOCK.Stop();
-                }
+                SENCOND_CLOCK.Stop();
+
             }
             else
             {
                 SENCOND_CLOCK.Start();
             }
+            alert();
         }
 
         private void textBox_timeDuration_KeyPress(object sender, KeyPressEventArgs e)
@@ -188,7 +187,8 @@ namespace PomodoroClock
             try
             {
                 alertPlayer.Play();
-            }catch(FileNotFoundException fnfe)
+            }
+            catch (FileNotFoundException fnfe)
             {
                 MessageBox.Show("声音播放失败，请检查程序完整性", "警告", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Console.WriteLine(fnfe.Message);
