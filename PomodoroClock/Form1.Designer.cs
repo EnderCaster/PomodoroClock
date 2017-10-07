@@ -48,8 +48,8 @@
             this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
             this.notifyIcon.Text = "PomodoroClock";
             this.notifyIcon.Visible = true;
-            this.notifyIcon.DoubleClick += new System.EventHandler(this.notifyIcon_DoubleClick);
-            this.notifyIcon.MouseDown += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_MouseDown);
+            this.notifyIcon.DoubleClick += new System.EventHandler(this.NotifyIcon_DoubleClick);
+            this.notifyIcon.MouseDown += new System.Windows.Forms.MouseEventHandler(this.NotifyIcon_MouseDown);
             // 
             // contextMenuStrip_exit
             // 
@@ -64,7 +64,7 @@
             this.terminateToolStripMenuItem.Name = "terminateToolStripMenuItem";
             this.terminateToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.terminateToolStripMenuItem.Text = "Terminate";
-            this.terminateToolStripMenuItem.Click += new System.EventHandler(this.terminateToolStripMenuItem_Click);
+            this.terminateToolStripMenuItem.Click += new System.EventHandler(this.TerminateToolStripMenuItem_Click);
             // 
             // ExitToolStripMenuItem
             // 
@@ -79,8 +79,8 @@
             this.textBox_timeDuration.Name = "textBox_timeDuration";
             this.textBox_timeDuration.Size = new System.Drawing.Size(100, 21);
             this.textBox_timeDuration.TabIndex = 0;
-            this.textBox_timeDuration.Click += new System.EventHandler(this.textBox_timeDuration_Click);
-            this.textBox_timeDuration.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_timeDuration_KeyPress);
+            this.textBox_timeDuration.Click += new System.EventHandler(this.TextBox_timeDuration_Click);
+            this.textBox_timeDuration.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_timeDuration_KeyPress);
             // 
             // button_submit
             // 
@@ -90,7 +90,7 @@
             this.button_submit.TabIndex = 2;
             this.button_submit.Text = "确认";
             this.button_submit.UseVisualStyleBackColor = true;
-            this.button_submit.Click += new System.EventHandler(this.button_submit_Click);
+            this.button_submit.Click += new System.EventHandler(this.Button_submit_Click);
             // 
             // label_timeDuration
             // 
