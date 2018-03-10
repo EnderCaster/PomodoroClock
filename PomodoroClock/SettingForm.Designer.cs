@@ -37,7 +37,7 @@
             this.textBox_timeDuration = new System.Windows.Forms.TextBox();
             this.button_submit = new System.Windows.Forms.Button();
             this.label_timeDuration = new System.Windows.Forms.Label();
-            this.restTime = new System.Windows.Forms.Label();
+            this.leftTime = new System.Windows.Forms.Label();
             this.contextMenuStrip_exit.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -103,20 +103,20 @@
             // 
             // restTime
             // 
-            this.restTime.AutoSize = true;
-            this.restTime.Font = new System.Drawing.Font("宋体", 50F);
-            this.restTime.Location = new System.Drawing.Point(26, 48);
-            this.restTime.Name = "restTime";
-            this.restTime.Size = new System.Drawing.Size(199, 67);
-            this.restTime.TabIndex = 4;
-            this.restTime.Text = "00:00";
+            this.leftTime.AutoSize = true;
+            this.leftTime.Font = new System.Drawing.Font("宋体", 50F);
+            this.leftTime.Location = new System.Drawing.Point(26, 48);
+            this.leftTime.Name = "restTime";
+            this.leftTime.Size = new System.Drawing.Size(199, 67);
+            this.leftTime.TabIndex = 4;
+            this.leftTime.Text = "00:00";
             // 
             // Form_main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(255, 226);
-            this.Controls.Add(this.restTime);
+            this.Controls.Add(this.leftTime);
             this.Controls.Add(this.label_timeDuration);
             this.Controls.Add(this.button_submit);
             this.Controls.Add(this.textBox_timeDuration);
@@ -136,7 +136,7 @@
         private System.Windows.Forms.TextBox textBox_timeDuration;
         private System.Windows.Forms.Button button_submit;
         private System.Windows.Forms.Label label_timeDuration;
-        private System.Windows.Forms.Label restTime;
+        private System.Windows.Forms.Label leftTime;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip_exit;
         private System.Windows.Forms.ToolStripMenuItem ExitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem terminateToolStripMenuItem;

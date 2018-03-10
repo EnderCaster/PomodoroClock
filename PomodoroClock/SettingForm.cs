@@ -40,9 +40,9 @@ namespace PomodoroClock
 
             //修改TIME_DURATION_NOW，并判断是否已到期限
             TIME_DURATION_NOW += 1000;
+            ChangeVisibleTime();
             if (RESTING)
             {
-                ThreadSetText(" REST");
                 if (TIME_DURATION_NOW >= TIME_DURATION_REST)
                 {
                     RESTING = !RESTING;
@@ -61,7 +61,6 @@ namespace PomodoroClock
             }
             else
             {
-                ChangeVisibleTime();
                 if (TIME_DURATION_NOW >= TIME_DURATION_WORK)
                 {
                     RESTING = !RESTING;
@@ -89,48 +88,20 @@ namespace PomodoroClock
 
         private void ChangeVisibleTime()
         {
-            int tmpTime, second, minute;
-            string secondS, minuteS;
-            if (RESTING)
-            {
-                tmpTime = (TIME_DURATION_REST - TIME_DURATION_NOW) / 1000;
-            }
-            else
-            {
-                tmpTime = (TIME_DURATION_WORK - TIME_DURATION_NOW) / 1000;
-            }
-            minute = tmpTime / 60;
-            second = tmpTime % 60;
-            if (minute < 10)
-            {
-                minuteS = "0" + minute.ToString();
-            }
-            else
-            {
-                minuteS = minute.ToString();
-            }
-            if (second < 10)
-            {
-                secondS = "0" + second.ToString();
-            }
-            else
-            {
-                secondS = second.ToString();
-            }
-            ThreadSetText(minuteS + ":" + secondS);
+            string timeString = GetTimeString();
+            ThreadSetText(timeString);
         }
         private void ThreadSetText(string s)
         {
-            if (this.restTime.InvokeRequired)
+            if (this.leftTime.InvokeRequired)
             {
                 SetTextCallback d = new SetTextCallback(ThreadSetText);
                 this.Invoke(d, new object[] { s });
             }
             else
             {
-                this.restTime.Text = s;
+                this.leftTime.Text = s;
             }
-            notifyIcon.BalloonTipText = restTime.Text;
         }
 
         private void Form_main_VisibleChanged(object sender, EventArgs e)
@@ -160,6 +131,8 @@ namespace PomodoroClock
         {
             if (e.Button == MouseButtons.Left)
             {
+                notifyIcon.BalloonTipText =leftTime.Text;
+                notifyIcon.BalloonTipTitle = (RESTING ? "REST" : "WORK") + " TIME LEFT";
                 notifyIcon.ShowBalloonTip(1000);
             }
         }
@@ -206,6 +179,39 @@ namespace PomodoroClock
         private void SetTimDurationEV(bool enable)
         {
             label_timeDuration.Enabled = label_timeDuration.Visible = button_submit.Enabled = button_submit.Visible = textBox_timeDuration.Enabled = textBox_timeDuration.Visible = enable;
+        }
+        private string GetTimeString()
+        {
+            int tmpTime, second, minute;
+            string secondS, minuteS;
+            if (RESTING)
+            {
+                tmpTime = (TIME_DURATION_REST - TIME_DURATION_NOW) / 1000;
+            }
+            else
+            {
+                tmpTime = (TIME_DURATION_WORK - TIME_DURATION_NOW) / 1000;
+            }
+            minute = tmpTime / 60;
+            second = tmpTime % 60;
+            if (minute < 10)
+            {
+                minuteS = "0" + minute.ToString();
+            }
+            else
+            {
+                minuteS = minute.ToString();
+            }
+            if (second < 10)
+            {
+                secondS = "0" + second.ToString();
+            }
+            else
+            {
+                secondS = second.ToString();
+            }
+            string timeString = minuteS + ":" + secondS;
+            return timeString;
         }
     }
 }
